@@ -63,3 +63,4 @@ MVPリリース
 
 アプリケーション上からGithubのリポジトリにCommit,Pushできればいいなと考えています。(草を生やせればいいなと思っています。)
 Github APIで実装できるのかは調べている段階です。
+LINE通知はLINE Messaing APIを使用する予定です。
