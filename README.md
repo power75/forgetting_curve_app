@@ -75,9 +75,9 @@ LINE通知: LINE Messaging API
 ・WebAPI
 　LINE Messaging API
 ・インフラ
-　Fly.io
+　Render.com
 ・データベース
-　MySQL
+　PostgreSQL
 ・コードの記述
 　マークダウンによるコードブロック
 
