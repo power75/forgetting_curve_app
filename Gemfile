@@ -44,7 +44,7 @@ gem "bootsnap", require: false
 
 gem 'cssbundling-rails'
 
-gem "bootstrap", "~> 5.3.0"
+gem "bootstrap", "~> 5.3.3"
 
 gem 'mini_racer'
 # Use Sass to process CSS
