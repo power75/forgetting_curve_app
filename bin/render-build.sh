@@ -5,4 +5,4 @@ set -o errexit
 bundle install
 bundle exec rake assets:precompile
 bundle exec rake assets:clean
-docker compose run web bin/rails db:migrate:reset
+bundle exec bin/rails db:migrate RAILS_ENV=production
