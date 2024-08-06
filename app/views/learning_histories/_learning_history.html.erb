@@ -1,0 +1,16 @@
+    <tr>
+      <td><%= learning_history.title %></td> <!-- # 変数名はrenderのオプションで指定した変数の単数形でなければいけない -->
+      <td><%= learning_history.created_at %></td>
+      <td><%= "tag.name" %></td>
+      <td><%= learning_history.count %></td>
+      <td>
+        <span><%= learning_history.status %></span>
+        <span>
+          <% if learning_history.status == "incomplete" %>
+            <%= button_to '完了にする', complete_learning_history_path(learning_history), method: :patch, class: "btn btn-primary" %>
+          <% else %>
+            <%= button_to '未完了にする', incomplete_learning_history_path(learning_history), method: :patch, class: "btn btn-primary" %>
+          <% end %>
+        </span>
+      </td>
+    </tr>
