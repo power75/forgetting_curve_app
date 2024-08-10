@@ -1,2 +1,38 @@
-<h1>LearningHistory#new</h1>
-<p>Find me in app/views/learning_history/new.html.erb</p>
+<div class="wrapper">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <h1><%= "学習記録作成" %></h1>
+        <%= form_with model: @learning_history, class: "new_learning_history" do |learning_history_form| %>
+          <div class="mb-3">
+            <%= learning_history_form.label :title %>
+            <%= learning_history_form.text_field :title, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= learning_history_form.label :content %>
+            <%= learning_history_form.text_area :content, class: "form-control", rows: "10" %>
+          </div>
+          <div class="mb-3">
+            <%= learning_history_form.label :hour %>
+            <%= learning_history_form.number_field :hour, class: "form-control" %>
+          </div>
+          <%= learning_history_form.fields_for :quiz do |quiz_form| %>
+            <div class="mb-3">
+              <%= quiz_form.label :title %>
+              <%= quiz_form.text_field :title, class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <%= quiz_form.label :content %>
+              <%= quiz_form.text_area :content, class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <%= quiz_form.label :sample_answer %>
+              <%= quiz_form.text_area :sample_answer, class: "form-control" %>
+            </div>
+          <% end %>
+        <%= learning_history_form.submit nil, class: "btn btn-secondary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
