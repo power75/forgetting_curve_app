@@ -7,9 +7,9 @@
         <span><%= learning_history.status %></span>
         <span>
           <% if learning_history.status == "incomplete" %>
-            <%= button_to '完了にする', complete_learning_history_path(learning_history), method: :patch, class: "btn btn-primary" %>
+            <%= button_to '完了にする', complete_learning_history_path(learning_history), method: :patch, class: "btn btn-secondary" %>
           <% else %>
-            <%= button_to '未完了にする', incomplete_learning_history_path(learning_history), method: :patch, class: "btn btn-primary" %>
+            <%= button_to '未完了にする', incomplete_learning_history_path(learning_history), method: :patch, class: "btn btn-secondary" %>
           <% end %>
         </span>
       </td>

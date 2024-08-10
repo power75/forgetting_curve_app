@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_02_123653) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_08_111540) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_02_123653) do
     t.index ["user_id"], name: "index_learning_histories_on_user_id"
   end
 
+  create_table "quizzes", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.text "sample_answer"
+    t.text "user_answer"
+    t.bigint "learning_history_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["learning_history_id"], name: "index_quizzes_on_learning_history_id"
+    t.index ["user_id"], name: "index_quizzes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -38,4 +51,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_02_123653) do
   end
 
   add_foreign_key "learning_histories", "users"
+  add_foreign_key "quizzes", "learning_histories"
+  add_foreign_key "quizzes", "users"
 end

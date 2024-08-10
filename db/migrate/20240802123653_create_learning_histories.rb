@@ -7,7 +7,7 @@ class CreateLearningHistories < ActiveRecord::Migration[7.0]
       t.integer :hour, null: false
       t.integer :count, null: false, default: 0
       t.integer :status, null: false, default: 0
-      t.references :user, foreign_key: true
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
