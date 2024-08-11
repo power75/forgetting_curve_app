@@ -23,6 +23,7 @@ class LearningHistoriesController < ApplicationController
   end
 
   def show
+    @learning_history = current_user.learning_histories.find(params[:id])
   end
 
   def complete # 学習完了にするボタン
