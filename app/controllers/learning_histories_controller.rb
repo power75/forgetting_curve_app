@@ -12,10 +12,11 @@ class LearningHistoriesController < ApplicationController
     @learning_history = current_user.learning_histories.build(learning_history_params)
     @learning_history.quiz.user = current_user if @learning_history.quiz.present? # quizにはuser_idが必要なのでcurrent_userを渡す
     if @learning_history.save
-      redirect_to learning_histories_path
+      redirect_to(learning_histories_path, success: 'create successful')
     else
-      Rails.logger.debug @learning_history.errors.full_messages
+      flash.now[:danger] = 'create failed'
       render :new, status: :unprocessable_entity
+
     end
   end
 
