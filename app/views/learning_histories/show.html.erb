@@ -1,1 +1,35 @@
-<%= markdown(@learning_history.content) %>
+<div class='wrapper'>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4"><%= "学習記録詳細" %></h1>
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h3 class="card-title"><%= @learning_history.title %></h3>
+            <div class="card-text">
+              <%= markdown(@learning_history.content) %>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">学習時間</h5>
+            <p class="card-text"><%= @learning_history.hour %></p>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Quizタイトル</h5>
+            <p class="card-text"><%= @learning_history.quiz.title %></p>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">クイズ詳細</h5>
+            <p class="card-text"><%= @learning_history.quiz.content %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
