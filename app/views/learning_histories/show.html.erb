@@ -5,7 +5,7 @@
       <div class="col-lg-8 offset-lg-2">
         <div class="card mb-4">
           <div class="card-body">
-            <h3 class="card-title"><%= @learning_history.title %></h3>
+            <h3 class="card-title"><%= @learning_history.title %></h3></br>
             <div class="card-text">
               <%= markdown(@learning_history.content) %>
             </div>
@@ -26,7 +26,7 @@
         <div class="card mb-4">
           <div class="card-body">
             <h5 class="card-title">クイズ詳細</h5>
-            <p class="card-text"><%= @learning_history.quiz.content %></p>
+            <p class="card-text"><%= markdown(@learning_history.quiz.content) %></p>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ class LearningHistoriesController < ApplicationController
   end
 
   def index
-    @learning_histories = LearningHistory.includes(:user)
+    @learning_histories = LearningHistory.includes(:quiz).all
   end
 
   def create
@@ -23,7 +23,7 @@ class LearningHistoriesController < ApplicationController
   end
 
   def show
-    @learning_history = current_user.learning_histories.find(params[:id])
+    @learning_history =  LearningHistory.includes(:quiz).find(params[:id])
   end
 
   def complete # 学習完了にするボタン
