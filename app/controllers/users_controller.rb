@@ -23,9 +23,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
       if @user.save
-        redirect_to(root_path, notice: "User was successfully created." )
+        redirect_to(root_path, success: "User was successfully created." )
       else
-        flash.now[:alart] = "Failure"
+        flash.now[:danger] = "Failure"
         render :new
       end
   end
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
+        format.html { redirect_to user_url(@user), danger: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to users_url, success: "User was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to users_url, success: "User was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_to(root_path, notice: 'Login successful')
+      redirect_to(learning_histories_path, success: 'Login successful')
     else
       flash.now[:alert] = 'Login failed'
       render :new, status: :unprocessable_entity
