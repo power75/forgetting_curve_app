@@ -45,6 +45,7 @@ class LearningHistoriesController < ApplicationController
       :title,
       :content,
       :image,
+      :image_cache,
       :hour,
       :count,
       quiz_attributes: [:title, :content, :sample_answer]
