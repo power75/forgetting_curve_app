@@ -19,6 +19,12 @@
         </div>
         <div class="card mb-4">
           <div class="card-body">
+            <h5 class="card-title">画像</h5>
+            <p class="card-text"><%= image_tag @learning_history.image_url, width: "822", height:"500" %></p>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body">
             <h5 class="card-title">Quizタイトル</h5>
             <p class="card-text"><%= @learning_history.quiz.title %></p>
           </div>
