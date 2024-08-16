@@ -20,7 +20,9 @@
         <div class="card mb-4">
           <div class="card-body">
             <h5 class="card-title">画像</h5>
+            <% if @learning_history.image? %>
             <p class="card-text"><%= image_tag @learning_history.image_url, width: "822", height:"500" %></p>
+            <% end %>
           </div>
         </div>
         <div class="card mb-4">
@@ -35,6 +37,9 @@
             <p class="card-text"><%= markdown(@learning_history.quiz.content) %></p>
           </div>
         </div>
+      </div>
+      <div>
+        <%= link_to('編集', edit_learning_history_path(@learning_history)) %>
       </div>
     </div>
   </div>

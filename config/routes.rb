@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post 'login' => "user_sessions#create"
   get 'logout' => 'user_sessions#destroy', :as => :logout
   resources :users
-  resources :learning_histories do
+  resources :learning_histories, only: %i[index new create show edit update destroy] do
     member do
       patch :complete
       patch :incomplete
