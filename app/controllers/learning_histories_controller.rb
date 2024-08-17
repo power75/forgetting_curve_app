@@ -37,7 +37,9 @@ class LearningHistoriesController < ApplicationController
   end
 
   def destroy
-
+    learning_history = current_user.learning_histories.includes(:quiz).find(params[:id])
+    learning_history.destroy!
+    redirect_to learning_histories_path, success: 'deleted!', status: :see_other
   end
 
   def show

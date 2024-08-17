@@ -41,6 +41,9 @@
       <div>
         <%= link_to('編集', edit_learning_history_path(@learning_history)) %>
       </div>
+      <div>
+      <%= link_to('削除', learning_history_path(@learning_history), data: { turbo_method: :delete, turbo_confirm: 'delete?' }) %>
+      </div>
     </div>
   </div>
 </div>
