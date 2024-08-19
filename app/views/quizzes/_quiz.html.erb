@@ -1,0 +1,7 @@
+<tr>
+<td><%= link_to(quiz.title, "#") %></td> <!-- # 変数名はrenderのオプションで指定した変数の単数形でなければいけない -->
+<td><%= quiz.created_at %></td>
+<td><%= "tag.name" %></td>
+<td><%= quiz.learning_history.count %></td>
+<td><%= quiz.learning_history.status %></td>
+</tr>
