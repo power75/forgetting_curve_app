@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => "user_sessions#create"
-  get 'logout' => 'user_sessions#destroy', :as => :logout
+  delete 'logout' => 'user_sessions#destroy', :as => :logout
   resources :users
-  resources :quizzes, only: %i[index]
+  resources :quizzes
   resources :learning_histories do
     member do
       patch :complete
