@@ -24,7 +24,7 @@
   </thead>
   <tbody>
     <% if @quizzes.present? %>
-      <%= render @quizzes %>
+      <%= render partial: 'quiz', collection: @quizzes %>
     <% else %>
       <div class="mb-3">Quizがありません</div>
     <% end %>

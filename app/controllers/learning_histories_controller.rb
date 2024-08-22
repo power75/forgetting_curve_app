@@ -29,7 +29,7 @@ class LearningHistoriesController < ApplicationController
     @learning_history = current_user.learning_histories.includes(:quiz).find(params[:id])
     @learning_history.quiz.user = current_user if @learning_history.quiz.present?
     if @learning_history.update(learning_history_params)
-      redirect_to learning_histories_path(@learning_history), success: 'update success'
+      redirect_to learning_histories_path, success: 'update success'
     else
       flash.now[:danger] = 'update failed'
       render :edit, status: :unprocessable_entity

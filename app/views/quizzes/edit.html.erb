@@ -1,0 +1,33 @@
+<div class='wrapper'>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4"><%= "Quiz実施" %></h1>
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h3 class="card-title"><%= @quiz.title %></h3></br>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Quizタイトル</h5>
+            <p class="card-text"><%= @quiz.title %></p>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">クイズ詳細</h5>
+            <p class="card-text"><%= markdown(@quiz.content) %></p>
+          </div>
+        </div>
+        <%= form_with model: @quiz do |quiz_form| %>
+          <div class="mb-3">
+            <%= quiz_form.label :user_answer %>
+            <%= quiz_form.text_area :user_answer, class: "form-control" %>
+          </div>
+          <%= quiz_form.submit nil, class: "btn btn-secondary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
