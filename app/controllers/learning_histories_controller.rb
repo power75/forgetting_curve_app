@@ -14,6 +14,7 @@ class LearningHistoriesController < ApplicationController
     if @learning_history.save
       redirect_to(learning_histories_path, success: 'create successful')
     else
+      Rails.logger.debug @learning_history.errors.full_messages
       flash.now[:danger] = 'create failed'
       render :new, status: :unprocessable_entity
     end
