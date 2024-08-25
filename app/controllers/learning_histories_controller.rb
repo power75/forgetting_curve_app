@@ -1,4 +1,6 @@
 class LearningHistoriesController < ApplicationController
+  include LearningStatus
+
   def new
     @learning_history = LearningHistory.new
     @learning_history.build_quiz
@@ -44,18 +46,6 @@ class LearningHistoriesController < ApplicationController
 
   def show
     @learning_history =  current_user.learning_histories.includes(:quiz).find(params[:id])
-  end
-
-  def complete # 学習完了にするボタン
-    @learning_history = current_user.learning_histories.find(params[:id])
-    @learning_history.update(status: 1)
-    redirect_to learning_histories_path, success: '完了にしました！'
-  end
-
-  def incomplete # 学習未完了に戻すボタン
-    @learning_history = current_user.learning_histories.find(params[:id])
-    @learning_history.update(status: 0)
-    redirect_to learning_histories_path, success: '未完了に戻しました！'
   end
 
   private
