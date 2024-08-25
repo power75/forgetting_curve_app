@@ -1,4 +1,6 @@
 class QuizzesController < ApplicationController
+  include LearningStatus
+
   def new
   end
 
@@ -10,6 +12,10 @@ class QuizzesController < ApplicationController
     @quiz = current_user.quizzes.includes(:learning_history).find(params[:id])
   end
 
+  def show
+    @quiz = current_user.quizzes.includes(:learning_history).find(params[:id])
+  end
+
   def edit
     @quiz = current_user.quizzes.includes(:learning_history).find(params[:id])
   end
@@ -17,7 +23,7 @@ class QuizzesController < ApplicationController
   def update
     @quiz = current_user.quizzes.includes(:learning_history).find(params[:id])
     if @quiz.update(quiz_params)
-      redirect_to quizzes_path, success: 'answered!'
+      redirect_to quiz_path, success: 'answered!'
     else
       flash.now[:danger] = 'update failed'
       render :edit, status: :unprocessable_entity
