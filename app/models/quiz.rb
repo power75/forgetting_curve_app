@@ -4,5 +4,5 @@ class Quiz < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
   validates :sample_answer, presence: true
-  validates :user_answer, presence: true
+  validates :user_answer, presence: true, on: :update, if: -> { user_answer.blank? }
 end

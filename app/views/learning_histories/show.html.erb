@@ -27,6 +27,14 @@
         </div>
         <div class="card mb-4">
           <div class="card-body">
+            <h5 class="card-title">タグ</h5>
+            <% @learning_history.tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body">
             <h5 class="card-title">Quizタイトル</h5>
             <p class="card-text"><%= @learning_history.quiz.title %></p>
           </div>

@@ -16,6 +16,10 @@
     <%= learning_history_form.file_field :image, class: "form-control", accept: 'image/*' %>
     <%= learning_history_form.hidden_field :image_cache %>
   </div>
+  <div class="mb-3">
+    <%= learning_history_form.label :tag %>
+    <%= learning_history_form.text_field :tag, class: "form-control" %>
+  </div>
   <%= learning_history_form.fields_for :quiz do |quiz_form| %>
     <div class="mb-3">
       <%= quiz_form.label :"Quiz title" %>
