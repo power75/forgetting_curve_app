@@ -1,6 +1,8 @@
 class LearningHistory < ApplicationRecord
   belongs_to :user
   has_one :quiz, dependent: :destroy
+  has_many :learning_history_tag_relations, dependent: :destroy
+  has_many :tags, through: :learning_history_tag_relations
   accepts_nested_attributes_for :quiz, allow_destroy: true
   validates :title, presence: true
   validates :content, length: { maximum: 4000}
