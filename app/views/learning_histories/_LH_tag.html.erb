@@ -1,0 +1,5 @@
+<% learning_history.tags.each do |tag| %>
+  <div class="badge">
+    <%= link_to tag.name, learning_histories_path(q: {tags_name_eq: tag.name}) %>
+  </div>
+<% end %>

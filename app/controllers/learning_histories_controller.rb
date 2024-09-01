@@ -7,7 +7,8 @@ class LearningHistoriesController < ApplicationController
   end
 
   def index
-    @learning_histories = current_user.learning_histories.includes(:quiz).all
+    @q = current_user.learning_histories.ransack(params[:q])
+    @learning_histories = @q.result(distinct: true).includes(:quiz).all.order(created_at: :desc)
   end
 
   def create
