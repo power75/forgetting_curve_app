@@ -10,4 +10,12 @@ class LearningHistory < ApplicationRecord
   enum status: {incomplete: 0, complete: 1}
 
   mount_uploader :image, LearningHistoryImageUploader
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["title"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["learning_history_tag_relations", "quiz", "tags", "user"]
+  end
 end

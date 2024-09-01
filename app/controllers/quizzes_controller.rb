@@ -5,7 +5,8 @@ class QuizzesController < ApplicationController
   end
 
   def index
-    @quizzes = current_user.quizzes.includes(:learning_history).all # includesで親モデルのLearning_historyも一緒に取得
+    @q = current_user.quizzes.ransack(params[:q])
+    @quizzes = @q.result(distinct: true).includes(:learning_history).all.order(created_at: :desc) # includesで親モデルのLearning_historyも一緒に取得
   end
 
   def create
