@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  get 'password_resets/create'
+  get 'password_resets/edit'
+  get 'password_resets/update'
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => "user_sessions#create"
   delete 'logout' => 'user_sessions#destroy', :as => :logout
+  # config/routes.rb
+  resources :password_resets, only: [:create, :edit, :update, :new]
   resources :users
   resources :quizzes
   resources :learning_histories do
