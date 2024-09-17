@@ -15,6 +15,7 @@ class LearningHistoriesController < ApplicationController
     @learning_history = current_user.learning_histories.build(learning_history_params)
     @learning_history.quiz.user = current_user if @learning_history.quiz.present? # quizにはuser_idが必要なのでcurrent_userを渡す。
     tag_names = params[:learning_history][:tags].split(',') # tag_namesにtagを代入する。カンマで区切る。
+    Notification.create(title: @learning_history.title, reviewed_at: Time.zone.today)
     if @learning_history.save
       tag_names.each do |tag_name|
         tag = Tag.find_or_create_by(name: tag_name.strip) # tagがなかったら新しく作ってtagに代入する。

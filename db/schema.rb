@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_02_115038) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_06_130642) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_02_115038) do
     t.index ["learning_history_id", "tag_id"], name: "index_lh_tr", unique: true
     t.index ["learning_history_id"], name: "index_learning_history_tag_relations_on_learning_history_id"
     t.index ["tag_id"], name: "index_learning_history_tag_relations_on_tag_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "quiz_id", null: false
+    t.string "title"
+    t.date "reviewed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_id"], name: "index_notifications_on_quiz_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "quizzes", force: :cascade do |t|
@@ -75,6 +86,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_02_115038) do
   add_foreign_key "learning_histories", "users"
   add_foreign_key "learning_history_tag_relations", "learning_histories"
   add_foreign_key "learning_history_tag_relations", "tags"
+  add_foreign_key "notifications", "quizzes"
+  add_foreign_key "notifications", "users"
   add_foreign_key "quizzes", "learning_histories"
   add_foreign_key "quizzes", "users"
 end

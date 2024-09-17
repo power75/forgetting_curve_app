@@ -24,6 +24,8 @@ class QuizzesController < ApplicationController
   def update
     @quiz = current_user.quizzes.includes(:learning_history).find(params[:id])
     if @quiz.update(quiz_params)
+      @quiz.learning_history.count += 1
+      @quiz.learning_history.save
       redirect_to quiz_path, success: 'answered!'
     else
       flash.now[:danger] = 'update failed'
