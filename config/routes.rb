@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
   get 'password_resets/create'
   get 'password_resets/edit'
   get 'password_resets/update'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
       patch :incomplete
     end
   end
+  resources :notifications,only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root 'static_pages#top'
   # Defines the root path route ("/")

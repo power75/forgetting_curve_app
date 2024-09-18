@@ -1,8 +1,7 @@
 class NotificationMailer < ApplicationMailer
-  default from: 'notifications@example.com'
-  def notification(user)
-    @user = user
-    mail(to: @user.email,
-    subject: '学習記録を作成しました')
+  def quiz_notification(quiz)
+    @quiz = quiz
+    @url = edit_quiz_url(@quiz)
+    mail(to: @quiz.user.email, subject: '復習リマインダー')
   end
 end
