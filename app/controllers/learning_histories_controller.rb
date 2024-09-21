@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class LearningHistoriesController < ApplicationController
   include LearningStatus
+  before_action :set_learning_history, only: %i[edit update show]
 
   def new
     @learning_history = LearningHistory.new
@@ -12,40 +15,28 @@ class LearningHistoriesController < ApplicationController
   end
 
   def create
-    @learning_history = current_user.learning_histories.build(learning_history_params)
-    @learning_history.quiz.user = current_user if @learning_history.quiz.present? # quizにはuser_idが必要なのでcurrent_userを渡す。
-    tag_names = params[:learning_history][:tags].split(',') # tag_namesにtagを代入する。カンマで区切る。
+    @learning_history = build_learning_history
+    tag_names = extract_tag_names
     Notification.create(title: @learning_history.title, reviewed_at: Time.zone.today)
     if @learning_history.save
-      tag_names.each do |tag_name|
-        tag = Tag.find_or_create_by(name: tag_name.strip) # tagがなかったら新しく作ってtagに代入する。
-        @learning_history.tags << tag
-      end
-      redirect_to(learning_histories_path, success: 'create successful')
+      @learning_history.add_tags(tag_names)
+      redirect_to(learning_histories_path, success: '学習記録を作成しました')
     else
-      flash.now[:danger] = 'create failed'
+      flash.now[:danger] = '作成に失敗しました'
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit
-    @learning_history = current_user.learning_histories.includes(:quiz).find(params[:id])
-    @learning_history.quiz.user = current_user if @learning_history.quiz.present?
-  end
+  def edit; end
 
   def update
-    @learning_history = current_user.learning_histories.includes(:quiz).find(params[:id])
-    @learning_history.quiz.user = current_user if @learning_history.quiz.present?
     @learning_history.tags.clear
-    tag_names = params[:learning_history][:tag].split(',')
+    tag_names = extract_tag_names
     if @learning_history.update(learning_history_params)
-      tag_names.each do |tag_name|
-        tag = Tag.find_or_create_by(name: tag_name.strip)
-        @learning_history.tags << tag unless @learning_history.tags.include?(tag)
-      end
-      redirect_to learning_histories_path, success: 'update success'
+      @learning_history.add_tags(tag_names)
+      redirect_to learning_histories_path, success: '学習記録を更新しました'
     else
-      flash.now[:danger] = 'update failed'
+      flash.now[:danger] = '更新に失敗しました'
       render :edit, status: :unprocessable_entity
     end
   end
@@ -53,16 +44,15 @@ class LearningHistoriesController < ApplicationController
   def destroy
     learning_history = current_user.learning_histories.includes(:quiz).find(params[:id])
     learning_history.destroy!
-    redirect_to learning_histories_path, success: 'deleted!', status: :see_other
+    redirect_to learning_histories_path, success: '学習記録を削除しました', status: :see_other
   end
 
-  def show
-    @learning_history =  current_user.learning_histories.includes(:quiz).find(params[:id])
-  end
+  def show; end
 
   private
-    def learning_history_params
-      params.require(:learning_history).permit(
+
+  def learning_history_params
+    params.require(:learning_history).permit(
       :title,
       :content,
       :image,
@@ -70,7 +60,23 @@ class LearningHistoriesController < ApplicationController
       :hour,
       :tag_name,
       :count,
-      quiz_attributes: [:title, :content, :sample_answer, :id]
-      )
-    end
+      quiz_attributes: %i[title content sample_answer id]
+    )
+  end
+
+  def build_learning_history
+    learning_history = current_user.learning_histories.build(learning_history_params)
+    learning_history.quiz.user = current_user if learning_history.quiz.present?
+    learning_history
+  end
+
+  def set_learning_history
+    @learning_history = current_user.learning_histories.includes(:quiz).find(params[:id])
+    # quizにはuser_idが必要なのでcurrent_userを渡す。
+    @learning_history.quiz.user = current_user if @learning_history.quiz.present?
+  end
+
+  def extract_tag_names
+    params[:learning_history][:tag].split(',') # tag_namesにtagを代入する。カンマで区切る。
+  end
 end

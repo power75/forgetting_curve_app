@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LearningHistoryImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

@@ -1,5 +1,6 @@
-class UserMailer < ApplicationMailer
+# frozen_string_literal: true
 
+class UserMailer < ApplicationMailer
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -11,6 +12,6 @@ class UserMailer < ApplicationMailer
     @url  = edit_password_reset_url(@user.reset_password_token)
 
     mail(to: @user.email,
-         subject: "パスワードリセットの案内")
+         subject: 'パスワードリセットの案内')
   end
 end
