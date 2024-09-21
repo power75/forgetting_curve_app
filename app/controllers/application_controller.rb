@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   before_action :require_login
   add_flash_types :success, :danger
 
   private
-    def not_authenticated
-      redirect_to login_path, danger: "Please login first"
-    end
+
+  def not_authenticated
+    redirect_to login_path, danger: 'ログインしてください'
+  end
 end

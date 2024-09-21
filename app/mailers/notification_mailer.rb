@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NotificationMailer < ApplicationMailer
   def quiz_notification(quiz)
     @quiz = quiz

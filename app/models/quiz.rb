@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Quiz < ApplicationRecord
   belongs_to :user
   belongs_to :learning_history, dependent: :destroy
@@ -5,13 +7,13 @@ class Quiz < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
   validates :sample_answer, presence: true
-  validates :user_answer, presence: true, on: :update, if: -> { user_answer.blank? }
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["content", "created_at", "id", "learning_history_id", "sample_answer", "title", "updated_at", "user_answer", "user_id"]
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[content created_at id learning_history_id sample_answer title updated_at user_answer
+       user_id]
   end
 
-  def self.ransackable_associations(auth_object = nil)
-    ["learning_history", "user"]
+  def self.ransackable_associations(_auth_object = nil)
+    %w[learning_history user]
   end
 end

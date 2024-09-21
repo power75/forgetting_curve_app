@@ -1,6 +1,8 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -18,9 +20,9 @@ module App
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    #wheneverのタスクはlibの中に置く
-    config.autoload_paths += Dir["#{config.root}/lib/**/"] #lib配下でディレクトリ分けする場合
-    #本番はeagar_load
+    # wheneverのタスクはlibの中に置く
+    config.autoload_paths += Dir["#{config.root}/lib/**/"] # lib配下でディレクトリ分けする場合
+    # 本番はeagar_load
     config.eager_load_paths += Dir["#{config.root}/lib/**/"]
   end
 end

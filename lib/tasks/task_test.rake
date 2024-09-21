@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 namespace :task_test do
-  desc "mailを送信する"
+  desc 'mailを送信する'
   task hello: :environment do
-      puts "hello!!!!!!!!!"
-    end
+    puts 'hello!!!!!!!!!'
   end
+end
