@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'how_to_use', to: 'static_pages#how_to_use'
   get 'notifications/index'
   get 'password_resets/create'
   get 'password_resets/edit'
