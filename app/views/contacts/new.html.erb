@@ -1,0 +1,17 @@
+<div class='wrapper'>
+  <div class="container">
+    <div class="row">
+      <h1>お問合せフォーム</h1>
+      <%= form_with model:@contact do |f| %>
+        <p>
+          <%= f.label :name,"お名前" %>
+          <%= f.text_field :name, class: "form-control" %>
+          <br>
+          <%= f.label :message,"お問合せ内容" %>
+          <%= f.text_area :message, class: "form-control" %>
+        </p>
+        <%= f.submit '送信', class: "btn btn-secondary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
