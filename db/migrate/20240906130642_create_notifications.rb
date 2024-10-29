@@ -6,7 +6,7 @@ class CreateNotifications < ActiveRecord::Migration[7.0]
       t.references :user, null: false, foreign_key: true
       t.references :quiz, null: false, foreign_key: true
       t.string :title
-      t.date :reviewed_at
+      t.datetime :notification_date
 
       t.timestamps
     end
