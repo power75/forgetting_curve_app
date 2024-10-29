@@ -16,4 +16,8 @@ class Quiz < ApplicationRecord
   def self.ransackable_associations(_auth_object = nil)
     %w[learning_history user]
   end
+
+  def create_notification(attributes = {})
+    build_notification(attributes)
+  end
 end

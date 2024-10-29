@@ -1,0 +1,28 @@
+<div class="container dashboard">
+  <div class="row column-gap-3">
+    <div class="col">
+      <!-- 左側のコンテンツ -->
+      <% if current_user.notifications.exists? %>
+        <%= month_calendar events: @notifications do |date, notifications| %>
+          <%= date.day %>
+          <% notifications.each do |notification| %>
+            <div>
+              <%= notification.title %>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%= month_calendar do |date| %>
+          <%= date.day %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col">
+      <!-- 右側のコンテンツ -->
+      <div class="chartkick">
+        <%= column_chart @data, width:"700px", xtitle: "日付", ytitle: "学習時間", colors: ["#101010"] %>
+      </div>
+    </div>
+  </div>
+</div>

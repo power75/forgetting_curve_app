@@ -8,4 +8,8 @@ class Notification < ApplicationRecord
     # メール送信のロジックをここに記述
     NotificationMailer.quiz_notification(quiz).deliver_now
   end
+
+  def start_time
+    self.notification_date
+  end
 end

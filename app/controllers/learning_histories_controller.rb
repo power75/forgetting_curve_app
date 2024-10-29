@@ -17,7 +17,6 @@ class LearningHistoriesController < ApplicationController
   def create
     @learning_history = build_learning_history
     tag_names = extract_tag_names
-    Notification.create(title: @learning_history.title, reviewed_at: Time.zone.today)
     if @learning_history.save
       @learning_history.add_tags(tag_names)
       redirect_to(learning_histories_path, success: '学習記録を作成しました')
@@ -77,6 +76,6 @@ class LearningHistoriesController < ApplicationController
   end
 
   def extract_tag_names
-    params[:learning_history][:tag].split(',') # tag_namesにtagを代入する。カンマで区切る。
+    params[:learning_history][:tags].split(',') # tag_namesにtagを代入する。カンマで区切る。
   end
 end

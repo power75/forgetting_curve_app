@@ -18,7 +18,7 @@
   </div>
   <div class="mb-3">
       <%= learning_history_form.label :tag %>
-      <%= learning_history_form.text_field :tag, class: "form-control", value: @learning_history.tags.map(&:name).join(',') %>
+      <%= learning_history_form.text_field :tags, class: "form-control", value: @learning_history.tags.map(&:name).join(',') %>
   </div>
   <%= learning_history_form.fields_for :quiz do |quiz_form| %>
     <div class="mb-3">

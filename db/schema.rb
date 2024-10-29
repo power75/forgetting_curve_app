@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_06_110216) do
     t.bigint "user_id", null: false
     t.bigint "quiz_id", null: false
     t.string "title"
-    t.date "reviewed_at"
+    t.datetime "notification_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["quiz_id"], name: "index_notifications_on_quiz_id"
