@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'oauths/oauth'
+  get 'oauths/callback'
   get 'how_to_use', to: 'static_pages#how_to_use'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
   get 'terms_of_service', to: 'static_pages#terms_of_service'
@@ -13,6 +15,9 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => 'user_sessions#create'
   delete 'logout' => 'user_sessions#destroy', :as => :logout
+  post "oauth/callback" => "oauths#callback"
+  get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
+  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
   # config/routes.rb
   resources :password_resets, only: %i[create edit update new]
   resources :users
