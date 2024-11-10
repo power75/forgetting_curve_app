@@ -1,0 +1,2 @@
+sorcery:
+    line_callback_url: 'https://forgetting-curve-app-1.onrender.com/oauth/callback?provider=line'

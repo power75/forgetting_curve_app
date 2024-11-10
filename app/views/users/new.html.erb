@@ -21,6 +21,10 @@
             </div>
             <%= f.submit "登録", class: "btn btn-primary" %>
          <% end %>
+         <br>
+         <%= link_to auth_at_provider_path(provider: :line) do %>
+            <%= image_tag 'btn_login_base' %>
+         <% end %>
       </div>
    </div>
 </div>
