@@ -9,7 +9,6 @@ class OauthsController < ApplicationController
   def callback
     provider = params[:provider]
     if @user = login_from(provider)
-      Rails.logger.debug @learning_history.errors.full_messages
       redirect_to root_path, :notice => "#{provider.titleize}でログインしました"
     else
       begin
