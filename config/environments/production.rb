@@ -106,5 +106,4 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.hosts << "9f9a-182-158-92-125.ngrok-free.app"
 end
