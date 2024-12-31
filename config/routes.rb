@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  post '/callback', to: 'line_bot#callback'
   get 'oauths/oauth'
   get 'oauths/callback'
   get 'how_to_use', to: 'static_pages#how_to_use'

@@ -13,4 +13,6 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :email, uniqueness: true, presence: true
   validates :reset_password_token, uniqueness: true, allow_nil: true
+  enum preferred_notification_method: { email: 0, line: 1 }
+  validates :preferred_notification_method, inclusion: { in: preferred_notification_methods.keys }
 end
