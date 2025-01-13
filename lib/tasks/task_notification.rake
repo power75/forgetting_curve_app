@@ -31,7 +31,7 @@ namespace :task_notification do
 
     if user.preferred_notification_method == 'line'
       # LINE通知を送信するロジック
-      LineNotificationService.new.send_notification(user, message)
+      LineBotController.new.send_notification(user, message)
     else
       # メール通知を送信するロジック
       notification.send_email
