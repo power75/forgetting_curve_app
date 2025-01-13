@@ -1,6 +1,6 @@
 require 'line/bot'
 
-class LineNotificationService
+class LineBotController < ApplicationController
   def initialize
     @client = Line::Bot::Client.new do |config|
       config.channel_id = ENV["LINE_CHANNEL_ID"]
