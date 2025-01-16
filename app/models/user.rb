@@ -2,9 +2,9 @@
 
 class User < ApplicationRecord
   authenticates_with_sorcery!
-  has_many :learning_histories
-  has_many :quizzes
-  has_many :notifications
+  has_many :learning_histories, :dependent => :destroy
+  has_many :quizzes, :dependent => :destroy
+  has_many :notifications, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
   accepts_nested_attributes_for :authentications
   validates :name, length: { maximum: 32 }

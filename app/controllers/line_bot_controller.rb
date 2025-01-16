@@ -10,10 +10,16 @@ class LineBotController < ApplicationController
   end
 
   def send_notification(user, message)
-    message = {
-      type: 'text',
-      text: message
-    }
-    @client.push_message(user.line_user_id, message)
+    line_auth = user.authentications.find_by(provider: 'line')
+    if line_auth
+      message = {
+        type: 'text',
+        text: message
+      }
+      response = @client.push_message(line_auth.uid, message)
+      p response
+    else
+      Rails.logger.error "LINE authentication not found for user #{user.id}"
+    end
   end
 end

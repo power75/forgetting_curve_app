@@ -1,30 +1,33 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-md-10 col-lg-8 mx-auto'>
-      <h1>ユーザー登録</h1>
-         <%= form_with model: @user do |f| %>
-            <div class='form-group'>
-               <%= f.label :name %>
-               <%= f.text_field :name, class: 'form-control' %>
-            </div>
-            <div class='form-group'>
-               <%= f.label :email %>
-               <%= f.email_field :email, class: 'form-control' %>
-            </div>
-            <div class='form-group'>
-               <%= f.label :password %>
-               <%= f.password_field :password, class: 'form-control' %>
-            </div>
-            <div class='form-group'>
-               <%= f.label :password_confirmation %>
-               <%= f.password_field :password_confirmation, class: 'form-control' %>
-            </div>
-            <%= f.submit "登録", class: "btn btn-primary" %>
-         <% end %>
-         <br>
-         <%= link_to auth_at_provider_path(provider: :line) do %>
-            <%= image_tag 'btn_login_base.png' %>
-         <% end %>
+<div class="wrapper">
+   <div class='container'>
+      <div class='row'>
+         <div class='col-md-10 col-lg-8 mx-auto'>
+            <h1>ユーザー登録</h1>
+               <%= form_with model: @user do |f| %>
+                  <div class='form-group'>
+                     <%= f.label :name %>
+                     <%= f.text_field :name, class: 'form-control' %>
+                  </div>
+                  <div class='form-group'>
+                     <%= f.label :email %>
+                     <%= f.email_field :email, class: 'form-control' %>
+                  </div>
+                  <div class='form-group'>
+                     <%= f.label :password %>
+                     <%= f.password_field :password, class: 'form-control' %>
+                  </div>
+                  <div class='form-group'>
+                     <%= f.label :password_confirmation %>
+                     <%= f.password_field :password_confirmation, class: 'form-control' %>
+                  </div>
+                  <%= f.submit "登録", class: "btn btn-primary" %>
+               <% end %>
+            <br>
+            <%= link_to auth_at_provider_path(provider: :line) do %>
+               <%= image_tag 'btn_login_base.png' %>
+            <% end %>
+            <p>※LINEログインする場合は、学習記録の通知を送信することを目的として、メールアドレスを取得します。</p>
+         </div>
       </div>
    </div>
 </div>

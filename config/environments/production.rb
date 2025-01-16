@@ -105,5 +105,7 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
-
+  host = 'https://forgetting-curve-app-1.onrender.com'
+  Rails.application.routes.default_url_options[:host] = host
+  config.hosts << "forgetting-curve-app-1.onrender.com"
 end

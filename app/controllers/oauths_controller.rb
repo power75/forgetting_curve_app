@@ -12,7 +12,10 @@ class OauthsController < ApplicationController
       redirect_to root_path, :notice => "#{provider.titleize}でログインしました"
     else
       begin
-        @user = create_from(provider)
+        @user = create_from(provider) do |user|
+          user.email = "#{user.name.downcase.gsub(' ', '_')}@example.com" if user.email.blank?
+          # メールアドレスが空の場合、ユーザー名を小文字に変換し、スペースをアンダースコアに置き換え、@example.comを追加
+        end
         reset_session
         auto_login(@user)
         redirect_to root_path, :notice => "#{provider.titleize}でログインしました"
