@@ -26,8 +26,11 @@ namespace :task_notification do
   end
 
   def send_notification(notification)
+    include Rails.application.routes.url_helpers
+
     user = notification.user
-    message = "あなたのクイズのURLはこちらです: #{notification.quiz.url}"
+    edit_quiz_url = edit_quiz_url(notification.quiz)
+    message = "あなたのクイズのURLはこちらです: #{edit_quiz_url}"
 
     if user.preferred_notification_method == 'line'
       # LINE通知を送信するロジック
