@@ -1,3 +1,4 @@
+<%= turbo_frame_tag "list" do %>
 <div class='wrapper'>
   <div class="container mt-5">
     <h1 class="text-center mb-4"><%= "Quiz結果" %></h1>
@@ -37,7 +38,15 @@
           <%= button_to 'はい', complete_learning_history_path(@quiz.learning_history), method: :patch, class: "btn btn-secondary" %>
           <%= button_to 'いいえ', incomplete_learning_history_path(@quiz.learning_history), method: :patch, class: "btn btn-secondary" %>
         </div>
+        <div>
+          <p>このクイズをシェアする</p>
+          <% twitter_share_url = "https://twitter.com/share?url=https://forgetting-curve-app-1.onrender.com/&text=【Wisdom Whistleで、今日の復習を完了しました！】" %>
+          <%= link_to twitter_share_url, target: '_blank', class: 'black-link', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
+          <i class="fa-brands fa-square-x-twitter fa-2xl"></i>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<% end %>

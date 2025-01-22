@@ -8,6 +8,9 @@
     <%= csp_meta_tag %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', type: "module" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <!-- meta_tag -->
+      <%= display_meta_tags(default_meta_tags) %>
   </head>
 
   <body>
