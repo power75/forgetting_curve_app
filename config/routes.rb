@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :users
   resources :quizzes
   resources :learning_histories do
+    get :autocomplete, on: :collection
     member do
       patch :complete
       patch :incomplete
