@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   # config/routes.rb
   resources :password_resets, only: %i[create edit update new]
   resources :users
-  resources :quizzes
+  resources :quizzes do
+    get :autocomplete, on: :collection
+  end
   resources :learning_histories do
     get :autocomplete, on: :collection
     member do
