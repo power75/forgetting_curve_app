@@ -49,8 +49,8 @@ class LearningHistoriesController < ApplicationController
   def show; end
 
   def autocomplete
-    @learning_histories = current_user.learning_histories.where("title LIKE ?", "%#{params[:q]}%").limit(10)
-    render json: @learning_histories.pluck(:title)
+    @learning_histories = current_user.learning_histories.where("title LIKE ?", "%#{params[:q]}%").limit(5)
+    render partial: 'autocomplete', locals: { learning_histories: @learning_histories }
   end
 
   private

@@ -1,5 +1,5 @@
 <div class="input-group mb-3">
-  <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_learning_histories_path %>" role="combobox" class="w-100">
+  <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_quizzes_path %>" role="combobox" class="w-100">
     <%= search_form_for q, url: url, html: { data: { turbo_frame: "list" } }, class: "d-flex" do |f| %>
       <%= f.search_field :title_cont, data: { autocomplete_target: 'input' }, class: "form-control", placeholder: "検索ワード" %>
       <div class="input-group-append">

@@ -35,6 +35,11 @@ class QuizzesController < ApplicationController
     end
   end
 
+  def autocomplete
+    @quizzes = current_user.quizzes.where("title LIKE ?", "%#{params[:q]}%").limit(5)
+    render partial: 'autocomplete', locals: { quizzes: @quizzes }
+  end
+
   private
 
   def quiz_params
