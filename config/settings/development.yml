@@ -1,4 +1,4 @@
 default_url_options:
   host: 'localhost:3000'
 sorcery:
-    line_callback_url: 'https://0bb9-182-158-92-125.ngrok-free.app/oauth/callback?provider=line'
+    line_callback_url: 'https://6fce-182-158-92-125.ngrok-free.app/oauth/callback?provider=line'

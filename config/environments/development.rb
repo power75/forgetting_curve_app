@@ -83,6 +83,6 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   host = 'localhost'
   Rails.application.routes.default_url_options[:host] = host
-  config.hosts << "0bb9-182-158-92-125.ngrok-free.app"
+  config.hosts << "6fce-182-158-92-125.ngrok-free.app"
 
 end
