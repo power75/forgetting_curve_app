@@ -75,4 +75,5 @@ Rails.application.configure do
   host = 'localhost'
   Rails.application.routes.default_url_options[:host] = host
   config.hosts << "6fce-182-158-92-125.ngrok-free.app"
+  config.hosts << "www.example.com"
 end
