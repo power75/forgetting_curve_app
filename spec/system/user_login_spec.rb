@@ -38,12 +38,6 @@ RSpec.feature "UserLogins", type: :feature do
       expect(current_path).to eq login_path
     end
 
-    scenario "ログイン前に通知連携設定にアクセスする" do
-      visit notifications_path # 適切なパスに変更してください
-      expect(page).to have_content 'ログインしてください'
-      expect(current_path).to eq login_path
-    end
-
     scenario "ログイン前に通知一覧にアクセスする" do
       visit notifications_path
       expect(page).to have_content 'ログインしてください'
@@ -102,6 +96,22 @@ RSpec.feature "UserLogins", type: :feature do
     scenario "ログイン後にプロフィールにアクセスする" do
       visit user_path(user)
       expect(current_path).to eq user_path(user)
+      expect(page).to have_content 'プロフィール'
+      expect(page).to have_selector('strong', text: 'メールアドレス:')
+      expect(page).to have_field('user_email', with: user.email)
+      expect(page).to have_selector('strong', text: 'ユーザー名:')
+      expect(page).to have_content user.name
+      expect(page).to have_selector('strong', text: '通知方法:')
+      expect(page).to have_select('user_preferred_notification_method', selected: user.preferred_notification_method)
+      expect(page).to have_button '保存する'
+      expect(page).to have_link '退会する', href: user_path(user)
+    end
+
+    scenario "ログアウトが正常にできる" do
+      visit root_path
+      click_link 'ログアウト'
+      expect(page).to have_content 'ログアウトしました'
+      expect(current_path).to eq login_path
     end
   end
 end
