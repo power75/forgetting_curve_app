@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :learning_history do
-    title { Faker::Lorem.sentence(word_count: 3) }
+    title { "test" }
     content { Faker::Lorem.paragraph(sentence_count: 5) }
     hour { Faker::Number.between(from: 1, to: 10) }
 

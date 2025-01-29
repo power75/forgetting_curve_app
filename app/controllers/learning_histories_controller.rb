@@ -34,6 +34,10 @@ class LearningHistoriesController < ApplicationController
     if @learning_history.update(learning_history_params)
       @learning_history.add_tags(tag_names)
       redirect_to learning_histories_path, success: '学習記録を更新しました'
+      respond_to do |format|
+        format.html { redirect_to learning_histories_path }
+        format.turbo_stream
+      end
     else
       flash.now[:danger] = '更新に失敗しました'
       render :edit, status: :unprocessable_entity
