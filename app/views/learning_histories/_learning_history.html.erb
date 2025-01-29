@@ -1,5 +1,5 @@
     <tr>
-      <td><%= link_to(learning_history.title, learning_history_path(learning_history.id, quiz: learning_history.quiz)) %></td> <!-- # 変数名はrenderのオプションで指定した変数の単数形でなければいけない -->
+      <td><%= link_to(learning_history.title, learning_history_path(learning_history.id, quiz: learning_history.quiz)) %></td>
       <td><%= learning_history.created_at %></td>
       <td><%= render 'LH_tag', learning_history: learning_history %></td>
       <td><%= learning_history.count %></td>
