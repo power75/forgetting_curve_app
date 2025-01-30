@@ -9,7 +9,7 @@ class OauthsController < ApplicationController
   def callback
     provider = params[:provider]
     if @user = login_from(provider)
-      redirect_to root_path, :notice => "#{provider.titleize}でログインしました"
+      redirect_to root_path, :success => "#{provider.titleize}でログインしました"
     else
       begin
         @user = create_from(provider) do |user|
@@ -18,9 +18,9 @@ class OauthsController < ApplicationController
         end
         reset_session
         auto_login(@user)
-        redirect_to root_path, :notice => "#{provider.titleize}でログインしました"
+        redirect_to root_path, :success => "#{provider.titleize}でログインしました"
       rescue
-        redirect_to root_path, :alert => "#{provider.titleize}でログインに失敗しました"
+        redirect_to root_path, :danger => "#{provider.titleize}でログインに失敗しました"
       end
     end
   end
