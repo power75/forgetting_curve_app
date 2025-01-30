@@ -93,7 +93,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'https://forgetting-curve-app-1.onrender.com' }
+  config.action_mailer.default_url_options = { host: 'wisdomwhistle.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     # gmail利用時はaddress,domain,portは下記で固定
@@ -105,7 +105,8 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
-  host = 'https://forgetting-curve-app-1.onrender.com'
+  host = 'wisdomwhistle.com'
   Rails.application.routes.default_url_options[:host] = host
   config.hosts << "forgetting-curve-app-1.onrender.com"
+  config.hosts << "wisdomwhistle.com"
 end

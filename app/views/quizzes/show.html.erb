@@ -38,7 +38,7 @@
           <%= button_to 'いいえ', incomplete_learning_history_path(@quiz.learning_history), method: :patch, class: "btn btn-secondary" %>
         </div>
         <p>このクイズをシェアする</p>
-        <% twitter_share_url = "https://twitter.com/share?url=https://forgetting-curve-app-1.onrender.com/&text=【Wisdom Whistleで、今日の復習を完了しました!】" %>
+        <% twitter_share_url = "https://twitter.com/share?url=https://wisdomwhistle.com/&text=【Wisdom Whistleで、今日の復習を完了しました!】" %>
         <%= link_to twitter_share_url, target: '_blank', class: 'black-link', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
           <%= image_tag 'logo-white.png', style: 'width: 15px; height: 15px;' %>
         <% end %>
