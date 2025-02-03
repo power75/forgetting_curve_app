@@ -1,7 +1,9 @@
 .home-wrapper {
+    min-height: calc(100vh - 100px);
     background: rgb(108, 107, 107);
-    height: 90vh;
-    position: relative;
+    margin-bottom: 88px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     background-position: center;
 }
 

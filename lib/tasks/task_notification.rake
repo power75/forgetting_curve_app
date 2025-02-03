@@ -8,7 +8,7 @@ namespace :task_notification do
 
     quizzes.each do |quiz|
       next if quiz.learning_history.status != 'incomplete'
-      # 通知が存在しない場合は作成
+      # 通知を作成
       notification = quiz.notification || quiz.create_notification(user: quiz.user, title: quiz.title)
 
       # 通知日を設定
