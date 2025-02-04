@@ -5,41 +5,41 @@
       <h1><%= "学習記録作成" %></h1>
         <%= form_with model: @learning_history, class: "new_learning_history" do |learning_history_form| %>
           <div class="mb-3">
-            <%= learning_history_form.label :title %>
+            <%= learning_history_form.label :"タイトル" %>
             <%= learning_history_form.text_field :title, class: "form-control" %>
           </div>
           <div class="mb-3">
-            <%= learning_history_form.label :content %>
+            <%= learning_history_form.label :"内容" %>
             <%= learning_history_form.text_area :content, class: "form-control", rows: "10" %>
           </div>
           <div class="mb-3">
-            <%= learning_history_form.label :hour %>
+            <%= learning_history_form.label :"学習時間" %>
             <%= learning_history_form.number_field :hour, class: "form-control" %>
           </div>
           <div class="mb-3">
-            <%= learning_history_form.label :image %>
+            <%= learning_history_form.label :"画像" %>
             <%= learning_history_form.file_field :image, class: "form-control", accept: 'image/*' %>
             <%= learning_history_form.hidden_field :image_cache %>
           </div>
           <div class="mb-3">
-            <%= learning_history_form.label :tags %>
+            <%= learning_history_form.label :"タグ" %>
             <%= learning_history_form.text_field :tags, value: @learning_history.tags.map(&:name).join(','), class: 'form-control', rows: 5, placeholder: ",で区切って入力してください" %>
           </div>
           <%= learning_history_form.fields_for :quiz do |quiz_form| %>
             <div class="mb-3">
-              <%= quiz_form.label :"Quiz title" %>
+              <%= quiz_form.label :"Quizタイトル" %>
               <%= quiz_form.text_field :title, class: "form-control" %>
             </div>
             <div class="mb-3">
-              <%= quiz_form.label :"Quiz content" %>
+              <%= quiz_form.label :"Quiz詳細" %>
               <%= quiz_form.text_area :content, class: "form-control" %>
             </div>
             <div class="mb-3">
-              <%= quiz_form.label :sample_answer %>
+              <%= quiz_form.label :"Quiz回答例" %>
               <%= quiz_form.text_area :sample_answer, class: "form-control" %>
             </div>
           <% end %>
-        <%= learning_history_form.submit nil, class: "btn btn-secondary" %>
+        <%= learning_history_form.submit "学習記録を作成する", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
