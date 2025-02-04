@@ -41,16 +41,14 @@
         </div>
         <div class="card mb-4">
           <div class="card-body">
-            <h5 class="card-title">クイズ詳細</h5>
+            <h5 class="card-title">Quiz詳細</h5>
             <p class="card-text"><%= markdown(@learning_history.quiz.content) %></p>
           </div>
         </div>
       </div>
-      <div>
-        <%= link_to('編集', edit_learning_history_path(@learning_history)) %>
-      </div>
-      <div>
-      <%= link_to('削除', learning_history_path(@learning_history), data: { turbo_method: :delete, turbo_confirm: 'delete?' }) %>
+      <div class="d-flex justify-content-center">
+        <%= link_to '編集', edit_learning_history_path(@learning_history), class: 'btn btn-primary ml-3' %>
+        <%= link_to '削除', learning_history_path(@learning_history), data: { turbo_method: :delete, turbo_confirm: '学習記録を削除しますか?(Quizも同時に削除されます)' }, class: 'btn btn-danger ms-3' %>
       </div>
     </div>
   </div>
