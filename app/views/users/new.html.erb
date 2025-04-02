@@ -5,22 +5,22 @@
             <h1>ユーザー登録</h1>
                <%= form_with model: @user do |f| %>
                   <div class='form-group'>
-                     <%= f.label :name %>
+                     <%= f.label :ユーザー名 %>
                      <%= f.text_field :name, class: 'form-control' %>
                   </div>
                   <div class='form-group'>
-                     <%= f.label :email %>
+                     <%= f.label :メールアドレス %>
                      <%= f.email_field :email, class: 'form-control' %>
                   </div>
                   <div class='form-group'>
-                     <%= f.label :password %>
+                     <%= f.label :パスワード %>
                      <%= f.password_field :password, class: 'form-control' %>
                   </div>
                   <div class='form-group'>
-                     <%= f.label :password_confirmation %>
+                     <%= f.label :パスワードの確認 %>
                      <%= f.password_field :password_confirmation, class: 'form-control' %>
                   </div>
-                  <%= f.submit "登録", class: "btn btn-primary" %>
+                  <%= f.submit "登録", class: "btn btn-primary mt-2" %>
                <% end %>
             <br>
             <%= link_to auth_at_provider_path(provider: :line) do %>
