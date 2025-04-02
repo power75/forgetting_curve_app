@@ -13,7 +13,16 @@
     <!-- meta_tag -->
       <%= display_meta_tags(default_meta_tags) %>
   </head>
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RX47JCE4CW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'G-RX47JCE4CW');
+  </script>
   <body>
       <% if logged_in? %>
         <%= render 'shared/header' %>
