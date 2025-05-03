@@ -16,16 +16,16 @@
         </div>
         <div class="card mb-4">
           <div class="card-body">
-            <h5 class="card-title">クイズ詳細</h5>
+            <h5 class="card-title">Quiz詳細</h5>
             <p class="card-text"><%= markdown(@quiz.content) %></p>
           </div>
         </div>
         <%= form_with model: @quiz do |quiz_form| %>
           <div class="mb-3">
-            <%= quiz_form.label :user_answer %>
+            <%= quiz_form.label :回答 %>
             <%= quiz_form.text_area :user_answer, class: "form-control" %>
           </div>
-          <%= quiz_form.submit nil, class: "btn btn-secondary" %>
+          <%= quiz_form.submit "Quizに回答する", class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>

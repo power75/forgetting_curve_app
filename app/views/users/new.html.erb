@@ -5,28 +5,28 @@
             <h1>ユーザー登録</h1>
                <%= form_with model: @user do |f| %>
                   <div class='form-group'>
-                     <%= f.label :name %>
+                     <%= f.label :ユーザー名 %>
                      <%= f.text_field :name, class: 'form-control' %>
                   </div>
                   <div class='form-group'>
-                     <%= f.label :email %>
+                     <%= f.label :メールアドレス %>
                      <%= f.email_field :email, class: 'form-control' %>
                   </div>
                   <div class='form-group'>
-                     <%= f.label :password %>
+                     <%= f.label :パスワード %>
                      <%= f.password_field :password, class: 'form-control' %>
                   </div>
                   <div class='form-group'>
-                     <%= f.label :password_confirmation %>
+                     <%= f.label :パスワードの確認 %>
                      <%= f.password_field :password_confirmation, class: 'form-control' %>
                   </div>
-                  <%= f.submit "登録", class: "btn btn-primary" %>
+                  <%= f.submit "登録", class: "btn btn-primary mt-2" %>
                <% end %>
             <br>
-            <%= link_to auth_at_provider_path(provider: :line) do %>
+            <%= link_to auth_at_provider_path(provider: :line, action_type: 'registration') do %>
                <%= image_tag 'btn_login_base.png' %>
             <% end %>
-            <p>※LINEログインする場合は、学習記録の通知を送信することを目的として、メールアドレスを取得します。</p>
+            <p>※LINEで登録する場合は、学習記録の通知を送信することを目的として、メールアドレスを取得します。</p>
          </div>
       </div>
    </div>
