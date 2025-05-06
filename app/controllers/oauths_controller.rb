@@ -12,8 +12,11 @@ class OauthsController < ApplicationController
     action_type = session.delete(:action_type) # セッションからaction_typeを取得
 
     if action_type == 'login'
-      login_from(provider)
-      redirect_to root_path, :success => "#{provider.titleize}でログインしました"
+      if @user = login_from(provider)
+        redirect_to root_path, success: "#{provider.titleize}でログインしました"
+      else
+        redirect_to root_path, danger: "#{provider.titleize}アカウントが登録されていません。先にLINEアカウントを連携してください。"
+      end
     elsif action_type == 'linking'
       handle_line_linking(provider)
     elsif action_type == 'registration'

@@ -35,6 +35,11 @@
         <div style="margin-top: 20px;">
           <%= link_to 'LINE連携', auth_at_provider_path(provider: :line, action_type: 'linking'), class: 'btn btn-success', local: true %>
         </div>
+        <% if current_user.line_user_id.present? %>
+          <div style="margin-top: 20px;">
+            <%= link_to 'LINE通知テスト', line_test_push_path, class: 'btn btn-info' %>
+          </div>
+        <% end %>
         <div style="margin-top: 20px;">
           <%= link_to '退会する', user_path(user), data: { turbo_method: :delete, turbo_confirm: '退会しますか？(ユーザー情報は削除されます。)' }, class: "btn btn-danger" %>
         </div>

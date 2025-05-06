@@ -38,4 +38,7 @@ Rails.application.routes.draw do
   root 'static_pages#top'
   # Defines the root path route ("/")
   # root "articles#index"
+
+  # LINEテスト用ルート
+  get 'line/test_push', to: 'line_test#test_push'
 end
